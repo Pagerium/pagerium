@@ -1,0 +1,36 @@
+'use-strict';
+import { pageriumRenderTemplateElement } from "../functions/pagerium-render-template-element";
+export class PageriumCycle {
+    constructor(selector, components, length = 0, options) {
+        this.selector = selector;
+        this.length = length;
+        this.components = components;
+        this.template = '';
+        this.options = options;
+        this.style = this.options.style;
+    }
+    get getSelector() {
+        return this.selector;
+    }
+    get getStyle() {
+        return this.style;
+    }
+    render() {
+        if (this.components === "undefined" || this.components.length === 0)
+            return;
+        let templateElement = null;
+        if (this.options.element) {
+            templateElement = pageriumRenderTemplateElement(this.options.element.selector, this.options.element.id, this.options.element.class);
+        }
+        for (let i = 0; i < this.length; i++) {
+            this.components.forEach(component => {
+                this.template += document.createElement(component).outerHTML;
+            });
+        }
+        if (templateElement)
+            templateElement.insertAdjacentHTML('afterbegin', this.template);
+        document.querySelectorAll(this.selector).forEach((e) => {
+            e.insertAdjacentHTML('afterbegin', templateElement ? templateElement.outerHTML : this.template);
+        });
+    }
+}
