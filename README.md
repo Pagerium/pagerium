@@ -1,10 +1,20 @@
-# Pagerium
+<p align="center">
+    <a href="https://www.npmjs.com/package/pagerium">
+        <img src="https://github.com/Pagerium/media/blob/main/logo.png" alt="pagerium" >
+    </a>
+</p>
+<h3 align="center">Pagerium.js - new web framework for creating sites.</h3>
+<h3 align="center">
+    This framework is in beta stage!
+</h3>
+<div align="center">
 
-<img src="https://github.com/Pagerium/media/blob/main/logo.png" alt="pagerium" >
+[![npm-version](https://img.shields.io/npm/v/pagerium)](https://www.npmjs.com/package/pagerium)
+[![repo-size](https://img.shields.io/github/repo-size/Pagerium/pagerium)](https://github.com/Pagerium/pagerium)
+[![license](https://img.shields.io/npm/l/pagerium)](https://github.com/Pagerium/pagerium/blob/main/LICENSE)
 
-pagerium.js - new web framework for creating sites.
+</div>
 
-### This framework is in beta stage!
 
 ## Table of contents
 - [Installation](#installation)
@@ -13,8 +23,9 @@ pagerium.js - new web framework for creating sites.
 - [Animation](#animation)
 - [Cycle](#cycle)
 - [Operators](#operators)
-- - [Addition](#addition)
-- - [Ternary](#ternary)
+    - [Addition](#addition)
+    - [If](#if)
+    - [Ternary](#ternary)
 - [License](#license)
 
 <div id='installation'></div>
@@ -101,6 +112,14 @@ const cycle = new PageriumCycle("new-cycle",['new-component'],2);
 ```javascript
 import { PageriumAddition } from 'pagerium';
 const addition = new PageriumAddition("new-addition",['new-component', 'new-component']);
+```
+<div id='if'></div>
+
+### If
+
+```javascript
+import { PageriumIf } from 'pagerium';
+const newIf = new PageriumIf("new-if",['new-component'],true);
 ```
 <div id='ternary'></div>
 

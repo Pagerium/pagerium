@@ -7,8 +7,8 @@ export class PageriumAnimation {
         this.component = component;
         this.template = "";
         this.options = options;
-        this.styleAnimation = this.options ? `.${this.options.class}{` + this.options.styleAnimation + `}` : "";
-        this.style = this.options ? (this.options.style ? this.options.style : "") + this.styleAnimation : "";
+        this.styleAnimation = typeof this.options !== "undefined" ? `.${this.options.class}{` + this.options.styleAnimation + `}` : "";
+        this.style = typeof this.options !== "undefined" ? (this.options.style ? this.options.style : "") + this.styleAnimation : "";
     }
     get getSelector() {
         return this.selector;
@@ -17,7 +17,7 @@ export class PageriumAnimation {
         return this.style;
     }
     render() {
-        if (this.component === "undefined" || this.options === "undefined")
+        if (typeof this.component === "undefined" || typeof this.options === "undefined")
             return;
         const component = document.createElement(this.component);
         let templateElement = null;

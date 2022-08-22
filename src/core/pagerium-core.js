@@ -1,7 +1,7 @@
 'use-strict';
 import { pageriumRenderStyle } from "../functions/pagerium-render-style";
 const pageriumRenderTemplate = (template, options) => {
-    if (options === "undefined")
+    if (typeof options === "undefined")
         return template;
     const regex = /\{{(.*?)}}/g;
     template = template.replace(regex, (str, d) => {
@@ -19,7 +19,7 @@ export class Pagerium {
         this.style = "";
     }
     render(template, options) {
-        if (this.template === "undefined" || this.options === "undefined")
+        if (typeof this.template === "undefined" || this.options === "undefined")
             return;
         this.template = pageriumRenderTemplate(template, options);
         document.querySelector(this.selector).insertAdjacentHTML('afterbegin', this.template);

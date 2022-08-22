@@ -1,21 +1,25 @@
 'use-strict';
 import { PageriumOperator } from '../pagerium-operator';
 import { pageriumRenderTemplateElement } from "../../functions/pagerium-render-template-element";
-export class PageriumAddition extends PageriumOperator {
-    constructor(selector, components, options) {
+export class PageriumIf extends PageriumOperator {
+    constructor(selector, components, bool, options) {
         super(selector, components, options);
+        this.bool = bool;
     }
     render() {
         if (typeof this.components === "undefined" || this.components.length === 0)
             return;
+        
         let templateElement = null;
-        if (this.components.length > 1) {
-            this.components.forEach((component) => {
-                this.template += document.createElement(component).outerHTML;
-            });
+
+        if(this.bool){
+            if (this.components.length > 0) {
+                this.components.forEach((component) => {
+                    this.template += document.createElement(component).outerHTML;
+                });
+            }
         }
-        else
-            throw new Error("Error: Addition operator renders two and more components");
+
         if(typeof this.options !== "undefined"){
             if (this.options.element) {
                 templateElement = pageriumRenderTemplateElement(this.options.element.selector, this.options.element.id, this.options.element.class);

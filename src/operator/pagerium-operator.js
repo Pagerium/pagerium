@@ -4,7 +4,7 @@ export class PageriumOperator {
         this.selector = selector;
         this.components = components;
         this.options = options;
-        this.style = this.options.style;
+        this.style = typeof this.options !== "undefined" ? this.options.style : "";
         this.template = '';
     }
     get getSelector() {

@@ -1,6 +1,5 @@
 import { PageriumComponentsType, PageriumDefaultOptionsType, PageriumLengthType, PageriumSelectorType, PageriumStyleType } from "../types/types";
 
-
 export class PageriumCycle {
     constructor(selector: PageriumSelectorType, components: PageriumComponentsType, length: PageriumLengthType, options?: PageriumDefaultOptionsType);
     selector: PageriumSelectorType;

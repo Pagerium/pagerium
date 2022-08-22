@@ -7,7 +7,7 @@ export class PageriumCycle {
         this.components = components;
         this.template = '';
         this.options = options;
-        this.style = this.options.style;
+        this.style = typeof this.options !== "undefined" ? this.options.style : "";
     }
     get getSelector() {
         return this.selector;
@@ -16,11 +16,13 @@ export class PageriumCycle {
         return this.style;
     }
     render() {
-        if (this.components === "undefined" || this.components.length === 0)
+        if (typeof this.components === "undefined" || this.components.length === 0)
             return;
         let templateElement = null;
-        if (this.options.element) {
-            templateElement = pageriumRenderTemplateElement(this.options.element.selector, this.options.element.id, this.options.element.class);
+        if(typeof this.options !== "undefined"){
+            if (this.options.element) {
+                templateElement = pageriumRenderTemplateElement(this.options.element.selector, this.options.element.id, this.options.element.class);
+            }
         }
         for (let i = 0; i < this.length; i++) {
             this.components.forEach(component => {

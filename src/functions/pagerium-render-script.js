@@ -3,7 +3,7 @@ export const pageriumRenderScript = (script, element) => {
     const scripts = script[0];
     const options = script[1];
     const elements = {};
-    if (!(options.elements === "undefined")) {
+    if (typeof options.elements !== "undefined") {
         options.elements.forEach((e) => {
             elements[Object.keys(e)[0]] = element.querySelector(e[Object.keys(e)[0]]);
         });

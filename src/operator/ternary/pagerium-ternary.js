@@ -7,7 +7,7 @@ export class PageriumTernary extends PageriumOperator {
         this.bool = bool;
     }
     render() {
-        if (this.components === "undefined" || this.components.length === 0)
+        if (typeof this.components === "undefined" || this.components.length === 0)
             return;
         let templateElement = null;
         if (this.components.length === 2) {
@@ -16,9 +16,13 @@ export class PageriumTernary extends PageriumOperator {
         }
         else
             throw new Error("Error: Ternary operator renders two components");
-        if (this.options.element) {
-            templateElement = pageriumRenderTemplateElement(this.options.element.selector, this.options.element.id, this.options.element.class);
+        
+        if(typeof this.options !== "undefined"){
+            if (this.options.element) {
+                templateElement = pageriumRenderTemplateElement(this.options.element.selector, this.options.element.id, this.options.element.class);
+            }
         }
+        
         if (templateElement)
             templateElement.insertAdjacentHTML('afterbegin', this.template);
         document.querySelectorAll(this.selector).forEach((e) => {

@@ -17,11 +17,15 @@ export class PageriumComponent {
     }
     render() {
         document.querySelectorAll(this.selector).forEach((e, index) => {
-            if (!(this.script === "undefined") && this.script[1].start === "beforeLoad")
-                pageriumRenderScript(this.script, e);
+            if(typeof this.script !== "undefined"){
+                if (this.script[1].start === "beforeLoad")
+                    pageriumRenderScript(this.script, e);
+            }
             e.insertAdjacentHTML('afterbegin', pageriumRenderData(this.template, this.data, index));
-            if (!(this.script === "undefined") && (this.script[1].start === "afterLoad" || this.script[1].start === "undefined"))
-                pageriumRenderScript(this.script, e);
+            if(typeof this.script !== "undefined"){
+                if ((this.script[1].start === "afterLoad" || this.script[1].start === "undefined"))
+                    pageriumRenderScript(this.script, e);
+            }
         });
     }
 }

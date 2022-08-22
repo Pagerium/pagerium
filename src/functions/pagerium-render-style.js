@@ -1,6 +1,6 @@
 'use-strict';
 export const pageriumRenderStyle = (renderingStyle) => {
-    if (renderingStyle === "undefined")
+    if (typeof renderingStyle === "undefined")
         return;
     const style = document.createElement('style');
     style.setAttribute("type", "text/css");
